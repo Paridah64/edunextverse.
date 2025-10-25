@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNextVerse | Pusat Keterampilan Digital & Kreatif</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> <style>
+
+  html { scroll-behavior: smooth; }
+  @keyframes flicker { 0%,100%{opacity:0.8;}50%{opacity:0.4;} }
+  @keyframes patternMove { from{background-position:0 0;} to{background-position:100px 100px;} }
+  @keyframes slideIn { 0%{transform:translateY(20px);opacity:0;}100%{transform:translateY(0);opacity:1;} }
+  @keyframes slideUpFade { 0%{transform:translateY(30px);opacity:0;}100%{transform:translateY(0);opacity:1;} }
+  @keyframes floating { 0%{transform:translateY(0px);}100%{transform:translateY(-15px);} }
+  @keyframes rotate-border { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif,'Roboto',sans-serif}
+  body{
+    background-color:#081a2f;
+    background-image:linear-gradient(180deg,#0A1C38 0%,#081a2f 50%,#0A1C38 100%);
+    background-attachment:fixed;color:#E0E0E0;line-height:1.6;overflow-x:hidden;
+  }
+  a{ text-decoration:none; color:inherit }
+
+  main{ max-width:1200px;margin:0 auto;padding:0 20px }
+  header{ background-color:rgba(8,26,47,0.95);backdrop-filter:blur(5px);box-shadow:0 4px 15px rgba(0,0,0,0.5);padding:20px 0;position:sticky;top:0;z-index:1000 }
+  nav{ max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px }
+  .logo{ font-size:2em;font-weight:700;color:#C2B280 }
+  .nav-links a{ color:#E0E0E0;margin-left:40px;padding-bottom:5px;border-bottom:2px solid transparent;transition:border-bottom .3s,color .3s }
+  .nav-links a:hover{ color:#42d4ff;border-bottom:2px solid #42d4ff }
+  .reflect-text{ color:#E0E0E0;text-shadow:0 0 5px rgba(66,212,255,0.3);-webkit-box-reflect:below -8px linear-gradient(transparent, rgba(0,0,0,0.4));transition:color .3s,text-shadow .3s }
+  .reflect-text:hover{ color:#42d4ff;text-shadow:0 0 15px rgba(66,212,255,0.7) }
+
+  .content-section{ padding:80px 0;border-bottom:1px solid #1c3a64;transition:background-color .5s }
+  .section-title{ color:#C2B280;font-size:2.8em;text-align:center;margin-bottom:15px;font-weight:600 }
+  .section-subtitle{ font-size:1.2em;color:#a9a9a9;text-align:center;margin-bottom:40px }
+  .cta-button{ display:inline-block;padding:15px 45px;background-color:#C2B280;color:#081a2f;font-size:1.1em;font-weight:bold;border-radius:50px;box-shadow:0 0 15px rgba(66,212,255,0.3);transition:all .3s;border:none;cursor:pointer }
+  .cta-button:hover{ background-color:#42d4ff;transform:scale(1.05);box-shadow:0 0 30px rgba(66,212,255,0.7),0 0 60px rgba(66,212,255,0.4) }
+
+  .hero-section{
+    position:relative; 
+    padding:100px 0; 
+    min-height:380px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+
+  .animated-bg{
+    position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background-color:#081a2f;
+    background-image:radial-gradient(#42d4ff 1px, transparent 1px),linear-gradient(90deg,#1c3a64 1px, transparent 1px),linear-gradient(#1c3a64 1px, transparent 1px);
+    background-size:50px 50px,150px 150px,150px 150px;animation:flicker 4s infinite alternate, patternMove 60s linear infinite;opacity:0.7;
+  }
+  .hero-content-wrapper{
+    width:100%;max-width:1200px;display:flex;gap:40px;align-items:center;padding:0 20px;box-sizing:border-box;
+  }
+
+  .hero-left{ flex:1; min-width:260px; }
+  .hero-right{ flex:1; display:flex; justify-content:flex-end; align-items:center; }
+
+  .hero-title{ font-size:2.4rem; font-weight:800; line-height:1.2; margin-bottom:18px; color:#ffffff; text-shadow:0 0 20px rgba(66,212,255,0.4) }
+  .tagline{ font-size:1.05rem; color:#c7d3e0; line-height:1.6; margin-bottom:22px }
+
+  .hero-image{ width:100%; max-width:520px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.4); object-fit:cover; transition:transform .3s ease,box-shadow .3s ease }
+  .hero-image:hover{ transform:scale(1.03); box-shadow:0 0 45px rgba(0,255,255,0.8) }
+
+  .solutions-bg{ background-color:#182F48 }
+  .levelup-bg{ background-color:#0F2B4D }
+  .contact-bg{ background-color:#182F48 }
+
+  .two-column-layout{ display:flex; gap:40px; align-items:center; margin-top:50px }
+  .two-column-layout.reverse-layout{ flex-direction:row-reverse }
+  .col-left{ flex:1 }
+  .col-right-img{ flex:1; border-radius:15px; overflow:hidden; box-shadow:0 0 15px rgba(66,212,255,0.5); transition:transform .3s }
+  .col-right-img:hover{ transform:scale(1.02) }
+  .content-image{ width:100%; height:auto; display:block; object-fit:cover }
+  .solusi-container{ display:flex; gap:30px; padding-bottom:20px }
+  .solusi-item{ flex:1; background-color:#122842; padding:30px; border-radius:15px; border:1px solid #1c3a64; opacity:0; animation:slideUpFade .8s ease-out forwards; position:relative; overflow:hidden; z-index:1 }
+  .solusi-item::before{ content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:conic-gradient(transparent,transparent,transparent,#42d4ff); z-index:-1; transition:opacity .5s; opacity:0; animation:rotate-border 4s linear infinite }
+  .solusi-item:hover::before{ opacity:1 }
+  .solusi-item:hover{ transform:scale(1.02); box-shadow:0 0 10px rgba(66,212,255,0.8) }
+  .solusi-item h3{ color:#42d4ff; margin-bottom:10px; font-size:1.6em }
+
+  .skills-grid{ display:flex; gap:30px }
+  .skill-detail{ background-color:#0A1C38; padding:25px; border-radius:10px; border:1px solid #1c3a64; opacity:0; animation:slideUpFade .8s ease-out forwards; position:relative; overflow:hidden; z-index:1; height:100% }
+  .skill-detail::before{ content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:conic-gradient(transparent,transparent,transparent,#C2B280); z-index:-1; transition:opacity .5s; opacity:0; animation:rotate-border 4s linear infinite }
+  .skill-detail:hover::before{ opacity:1 }
+  .skill-detail:hover{ background-color:#122842; transform:scale(1.02); box-shadow:0 0 10px rgba(194,178,128,0.8) }
+
+  .contact-form{ max-width:700px; margin:0 auto; background-color:#122842; padding:30px; border-radius:15px; box-shadow:0 0 25px rgba(66,212,255,0.2); display:grid; grid-template-columns:1fr 1fr; gap:20px 30px }
+  .form-group{ display:flex; flex-direction:column }
+  .form-group.full-width{ grid-column:1 / -1 }
+  .form-group label{ margin-bottom:5px; font-weight:500; color:#C2B280 }
+  .contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea{ padding:12px; border:1px solid #1c3a64; background-color:#081a2f; color:#E0E0E0; border-radius:8px; width:100% }
+  .contact-form .cta-button{ grid-column:1 / -1; margin-top:15px; justify-self:center; max-width:250px }
+
+  footer{ background-color:#000000; padding:30px 0 10px; color:#7DA0C4 }
+  .footer-content{ max-width:1200px; margin:0 auto; padding:0 20px 30px; display:flex; justify-content:space-between; border-bottom:1px solid #1c3a64 }
+  .footer-bottom{ text-align:center; padding:20px 0 }
+  .small-text{ font-size:.8em; color:#555555 }
+
+  @media (max-width:900px){
+    .hero-content-wrapper{ flex-direction:column; text-align:center }
+    .hero-right{ justify-content:center }
+    .hero-image{ max-width:90%; margin-top:24px }
+
+    .two-column-layout{ flex-direction:column }
+    .skills-grid{ flex-direction:column }
+    .contact-form{ grid-template-columns:1fr }
+  }
+  </style></head>
+<body>  <header>
+    <nav>
+      <a href="#beranda" class="logo">EduNextVerse</a>
+      <div class="nav-links">
+        <a href="#beranda" class="reflect-text">Beranda</a>
+        <a href="#matrix" class="reflect-text">Program</a>
+        <a href="#tentang" class="reflect-text">Tentang Kami</a>
+        <a href="#skills" class="reflect-text">Keterampilan Inti</a>
+        <a href="#kontak" class="reflect-text">Info Pendaftaran</a>
+      </div>
+    </nav>
+  </header>  <main><section id="beranda" class="hero-section">
+  <div class="animated-bg"></div>
+
+  <div class="hero-content-wrapper">
+    <div class="hero-left">
+      <h1 class="hero-title">Membentuk Keterampilan Praktis untuk Sukses di Era Digital</h1>
+      <p class="tagline">Kami fokus mengajarkan <em>skill</em> yang benar-benar dipakai di dunia kerja—dari Desain Digital, Kreativitas, hingga Komunikasi Efektif. Belajar sambil membuat proyek sungguhan!</p>
+      <a href="#matrix" class="cta-button">Lihat Program Kami</a>
+    </div>
+
+    <div class="hero-right">
+      <img src="gambar web.jpg" alt="Orang mengetik di laptop" class="hero-image">
+    </div>
+  </div>
+</section>
+
+<section id="matrix" class="content-section solutions-bg">
+  <h2 class="section-title">Program Inti: Tiga Jalur<br>Penguasaan Keterampilan</h2>
+  <p class="section-subtitle">Struktur pembelajaran yang simpel, fokus pada praktek, dan menghasilkan portofolio nyata.</p>
+
+  <div class="two-column-layout">
+    <div class="col-left">
+      <div class="solusi-container">
+        <div class="solusi-item">
+          <h3>1.Mastering Digital Design</h3>
+          <p>Belajar membuat <strong>konten visual dan video</strong> yang menarik. Menguasai alat dasar untuk desain poster, infografis, dan <em>editing</em> video simpel yang siap publikasi.</p>
+        </div>
+        <div class="solusi-item">
+          <h3>2.Innovation & Problem Solving</h3>
+          <p>Latihan mencari <strong>solusi kreatif</strong> untuk masalah sehari-hari atau tantangan bisnis. Kami mengajarkan cara berpikir kritis dan cepat, bukan menghafal.</p>
+        </div>
+        <div class="solusi-item">
+          <h3>3.Communi-<br>cating with Impact</h3></h3></h3>
+          <p>Fokus pada cara <strong>berbicara dan presentasi yang percaya diri</strong>. Belajar menulis email, laporan, dan pesan yang mudah dipahami dan punya daya tarik.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-right-img">
+      <img src="pexels-tranmautritam-326503.jpg" alt="Desain komputer modern" class="content-image">
+    </div>
+  </div>
+</section>
+
+<section id="tentang" class="content-section solutions-bg">
+  <h2 class="section-title">Visi & Filosofi: Jembatan Menuju Masa Depan</h2>
+  <p class="section-subtitle">Kami adalah garda depan pendidikan digital, fokus pada pembentukan pemikir kritis, bukan penghafal materi</p>
+  <div class="solusi-container" style="padding-top:20px">
+    <div class="solusi-item"><h3>Visi Kami</h3><p>Menjadi platform pembelajaran adaptif nomor satu di Asia yang melahirkan inovator dan pemecah masalah digital terkemuka di dunia.</p></div>
+    <div class="solusi-item"><h3>Misi Kami</h3><p>Menyediakan kurikulum berbasis proyek yang fleksibel, menggabungkan kecerdasan buatan, dan bimbingan mentor global untuk mempersiapkan karir masa depan.</p></div>
+    <div class="solusi-item"><h3>Filosofi Pembelajaran</h3><p>Kami menganut prinsip <strong>"Learning by Doing"</strong>. Setiap materi disajikan melalui studi kasus dan proyek nyata agar langsung bisa diterapkan.</p></div>
+  </div>
+</section>
+
+<section id="skills" class="content-section levelup-bg">
+  <h2 class="section-title">Membangun Fondasi Keterampilan<br>Lunak (Soft Skills)</h2>
+  <p class="section-subtitle">Keterampilan yang membuat Anda menjadi rekan kerja dan pemimpin tim yang disukai dan dicari</p>
+  <div class="two-column-layout reverse-layout">
+    <div class="col-right-img"><img src="gambar web2.jpg" alt="Mengetik di laptop" class="content-image"></div>
+    <div class="col-left">
+      <div class="skills-grid">
+        <div class="skill-detail"><h4><div class=""></div>Digital Storytelling</h4><p>Kemampuan menceritakan ide atau produk Anda menggunakan media digital (gambar, video, website) agar audiens tertarik dan mengerti.</p></div>
+        <div class="skill-detail"><h4><div class=""></div>Collaborative Teamwork</h4><p>Belajar cara bekerja dalam tim, membagi tugas dengan adil, dan menghargai perbedaan ide tanpa bertengkar.</p></div>
+        <div class="skill-detail"><h4><div class=""></div>Time Management & Focus</h4><p>Menguasai trik untuk mengatur jadwal, menentukan prioritas, dan tetap fokus mengerjakan tugas yang rumit dalam waktu lama.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak" class="content-section contact-bg">
+  <h2 class="section-title">Minta Brosur & Informasi Pendaftaran</h2>
+  <p class="section-subtitle">Tertarik dengan model pembelajaran futuristik kami?<br>Kirimkan permintaan Anda untuk mendapatkan <em>e-brochure</em> gratis.</p>
+  <form class="contact-form">
+    <div class="form-group"><label for="nama">Nama Lengkap</label><input type="text" id="nama" required></div>
+    <div class="form-group"><label for="email">Email Kontak Anda</label><input type="email" id="email" required></div>
+    <div class="form-group full-width"><label for="pesan">Pertanyaan atau Keterangan Tambahan</label><textarea id="pesan" rows="5" required></textarea></div>
+    <button type="submit" class="cta-button">Dapatkan Brosur Gratis</button>
+  </form>
+</section>
+
+  </main>  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">EduNextVerse</div>
+      <div class="footer-links"><h4>Tentang</h4><p><a href="#">Visi & Misi</a></p><p><a href="#">Peluang Karir</a></p></div>
+      <div class="footer-links"><h4>Legal</h4><p><a href="#">Ketentuan Layanan</a></p><p><a href="#">Kebijakan Privasi</a></p></div>
+      <div class="footer-contact"><h4>Hubungi</h4><p>info@edunextverse.com</p><p>Jl. Inovasi Global No. 1</p></div>
+    </div>
+    <div class="footer-bottom"><p class="small-text">&copy; 2025 EduNextVerse Corporation. All Rights Reserved.</p></div>
+  </footer></body>
+</html>
