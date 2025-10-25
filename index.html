@@ -5,7 +5,7 @@
   <title>EduNextVerse | Pusat Keterampilan Digital & Kreatif</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 @keyframes flicker { 0%,100%{opacity:0.8;}50%{opacity:0.4;} }
 @keyframes patternMove { from{background-position:0 0;} to{background-position:100px 100px;} }
 @keyframes slideIn { 0%{transform:translateY(20px);opacity:0;}100%{transform:translateY(0);opacity:1;} }
@@ -21,7 +21,9 @@ body{
 }
 a{ text-decoration:none; color:inherit }
 
+
 main{ max-width:1200px;margin:0 auto;padding:0 20px }
+
 header{ background-color:rgba(8,26,47,0.95);backdrop-filter:blur(5px);box-shadow:0 4px 15px rgba(0,0,0,0.5);padding:20px 0;position:sticky;top:0;z-index:1000 }
 nav{ max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px }
 .logo{ font-size:2em;font-weight:700;color:#C2B280 }
@@ -30,6 +32,7 @@ nav{ max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;a
 .reflect-text{ color:#E0E0E0;text-shadow:0 0 5px rgba(66,212,255,0.3);-webkit-box-reflect:below -8px linear-gradient(transparent, rgba(0,0,0,0.4));transition:color .3s,text-shadow .3s }
 .reflect-text:hover{ color:#42d4ff;text-shadow:0 0 15px rgba(66,212,255,0.7) }
 
+/* Padding section dikurangi untuk HP */
 .content-section{ padding:80px 0;border-bottom:1px solid #1c3a64;transition:background-color .5s }
 .section-title{ color:#C2B280;font-size:2.8em;text-align:center;margin-bottom:15px;font-weight:600 }
 .section-subtitle{ font-size:1.2em;color:#a9a9a9;text-align:center;margin-bottom:40px }
@@ -78,13 +81,17 @@ nav{ max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;a
 .solusi-item::before{ content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:conic-gradient(transparent,transparent,transparent,#42d4ff); z-index:-1; transition:opacity .5s; opacity:0; animation:rotate-border 4s linear infinite }
 .solusi-item:hover::before{ opacity:1 }
 .solusi-item:hover{ transform:scale(1.02); box-shadow:0 0 10px rgba(66,212,255,0.8) }
-.solusi-item h3{ color:#42d4ff; margin-bottom:10px; font-size:1.6em }
+.solusi-item h3{ color:#42d4ff; margin-bottom:10px; font-size:1.6em; text-align: center; } 
+.solusi-item p { text-align: center; } 
 
 .skills-grid{ display:flex; gap:30px; flex-wrap: wrap; }
 .skill-detail{ flex:1; background-color:#0A1C38; padding:25px; border-radius:10px; border:1px solid #1c3a64; opacity:0; animation:slideUpFade .8s ease-out forwards; position:relative; overflow:hidden; z-index:1; height:100% }
 .skill-detail::before{ content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:conic-gradient(transparent,transparent,transparent,#C2B280); z-index:-1; transition:opacity .5s; opacity:0; animation:rotate-border 4s linear infinite }
 .skill-detail:hover::before{ opacity:1 }
 .skill-detail:hover{ background-color:#122842; transform:scale(1.02); box-shadow:0 0 10px rgba(194,178,128,0.8) }
+.skill-detail h4 { text-align: center; font-size: 1.4em; } 
+.skill-detail p { text-align: center; } 
+
 
 .contact-form{ max-width:700px; margin:0 auto; background-color:#122842; padding:30px; border-radius:15px; box-shadow:0 0 25px rgba(66,212,255,0.2); display:grid; grid-template-columns:1fr 1fr; gap:20px 30px }
 .form-group{ display:flex; flex-direction:column }
@@ -99,43 +106,52 @@ footer{ background-color:#000000; padding:30px 0 10px; color:#7DA0C4 }
 .small-text{ font-size:.8em; color:#555555 }
 
 
-@media (max-width:900px){
-    .nav-links { display: none; } 
-    nav { padding: 0 10px; } 
 
-    .hero-content-wrapper{ flex-direction:column; text-align:center }
-    .hero-left { min-width: 100%; } 
-    .hero-right{ justify-content:center }
-    .hero-title{ font-size:2.2rem; } 
-    .hero-image{ max-width:100%; margin-top:30px }
+@media (max-width:900px){
     
-   
-    .section-title{ font-size: 2.0em; }
-    .section-subtitle{ font-size: 1.0em; }
+    main { padding: 0 15px; } 
+    .content-section { padding: 50px 0; } 
+
+    
+    .nav-links { display: none; } 
+    nav { 
+        padding: 15px 15px; 
+        justify-content: center; /* Pusatkan logo *
+    } 
+
+    
+    .hero-content-wrapper{ flex-direction:column; text-align:center; gap: 20px; }
+    .hero-title{ font-size:1.8rem; } 
+    .tagline { font-size: 0.95em; }
+    .hero-image{ max-width:100%; margin-top:15px }
     
     
+    .section-title{ font-size: 1.8em; margin-bottom: 10px; }
+    .section-subtitle{ font-size: 0.9em; margin-bottom: 30px; }
+    
+  
     .two-column-layout{ flex-direction:column; margin-top: 30px; }
     .col-right-img { order: -1; margin-bottom: 20px; } 
     .two-column-layout.reverse-layout .col-right-img { order: 0; } 
-  
+
+    
     .solusi-container, .skills-grid { 
         flex-direction: column; 
-        gap: 20px;
+        gap: 15px; 
     }
     .solusi-item, .skill-detail {
         min-width: 100%;
+        padding: 20px; 
     }
 
-    .contact-form{ grid-template-columns:1fr; gap: 15px; }
+    
+    .contact-form{ grid-template-columns:1fr; gap: 15px; padding: 20px; }
 
+   
     .footer-content { 
         flex-direction: column; 
         text-align: center; 
-        gap: 30px;
-    }
-    .footer-links h4, .footer-contact h4 {
-        margin-bottom: 10px;
-        color: #C2B280;
+        gap: 20px;
     }
 }
   </style></head>
@@ -240,3 +256,4 @@ footer{ background-color:#000000; padding:30px 0 10px; color:#7DA0C4 }
   </footer></body>
 
 </html>
+
